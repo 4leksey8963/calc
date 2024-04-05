@@ -17,9 +17,9 @@ public class Main {
                 // ВВОД ПЕРВОГО ЧИСЛА
                 System.out.print("\nВведите первое число: ");
                 input = new Scanner(System.in);
-                while(!input.hasNextFloat())
+                while(!input.hasNextInt())
                 {
-                    System.out.println("Требуется ввести число!");
+                    System.out.println("Требуется ввести целое число!");
                     input.next();
                     System.out.print("\nВведите первое число: ");
                 }
@@ -41,8 +41,9 @@ public class Main {
                 // ВВОД ВТОРОГО ЧИСЛА
                 System.out.print("\nВведите второе число: ");
                 input = new Scanner(System.in);
-                while(!input.hasNextFloat())
+                while(!input.hasNextInt())
                 {
+                    System.out.println("Требуется ввести целое число!");
                     input.next();
                     System.out.print("\nВведите второе число: ");
                 }
@@ -51,16 +52,19 @@ public class Main {
 
                 System.out.println("______________________");
 
-                System.out.println("\n" + "HEX: " + a + " " + operation+ " " +  + b + " = " + Calculate.returnCalculate(a,b,operation).get(3));
-                System.out.println("DEC: " + a + " " + operation+ " " +  + b + " = " + Calculate.returnCalculate(a,b,operation).get(2));
-                System.out.println("OCT: " + a + " " + operation+ " " +  + b + " = " + Calculate.returnCalculate(a,b,operation).get(1));
-                System.out.println("BIN: " + a + " " + operation+ " " +  + b + " = " + Calculate.returnCalculate(a,b,operation).get(0));
-
-                System.out.println("Для продолжения введите 'a' и нажмите 'Enter'. Чтобы закончить - любая другая клавиша...");
-                input = new Scanner(System.in);
-                if(!((input.next()).toLowerCase()).equals("a")){
-                    break;
+                if(operation.equals("/") && b == 0)
+                    System.out.println("\nДеление на ноль невозможно!");
+                else {
+                    System.out.println("\n" + "HEX: " + a + " " + operation+ " " +  + b + " = " + Calculate.returnCalculate(a,b,operation).get(3));
+                    System.out.println("DEC: " + a + " " + operation+ " " +  + b + " = " + Calculate.returnCalculate(a,b,operation).get(2));
+                    System.out.println("OCT: " + a + " " + operation+ " " +  + b + " = " + Calculate.returnCalculate(a,b,operation).get(1));
+                    System.out.println("BIN: " + a + " " + operation+ " " +  + b + " = " + Calculate.returnCalculate(a,b,operation).get(0));
                 }
+
+                System.out.println("\nДля продолжения введите 'w' и нажмите ENTER. Чтобы закончить - любая другая клавиша...");
+                if (!(input.next()).equalsIgnoreCase("w"))
+                    break;
+
                 System.out.println("///______________________///");
             }
         }
@@ -68,7 +72,6 @@ public class Main {
         {
             System.out.print("Ошибка: " + e);
         }
-
     }
 
 }

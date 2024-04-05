@@ -12,6 +12,8 @@ public class Main {
         {
             while(true)
             {
+                // ВЫБОР СИСТЕМЫ ИСЧИСЛЕНИЯ
+
                 // ВВОД ПЕРВОГО ЧИСЛА
                 System.out.print("\nВведите первое число: ");
                 input = new Scanner(System.in);
@@ -22,7 +24,7 @@ public class Main {
                     System.out.print("\nВведите первое число: ");
                 }
                 System.out.println("______________________");
-                float a = input.nextFloat();
+                int a = input.nextInt();
 
                 // ВВОД СИМВОЛА ОПЕРАЦИИ
                 System.out.print("\nВведите символ операции (+, -, *, /): ");
@@ -34,7 +36,7 @@ public class Main {
                     System.out.print("\nВведите символ операции (+, -, *, /): ");
                     operation = input.next();
                 }
-                System.out.println("///______________________///");
+                System.out.println("______________________");
 
                 // ВВОД ВТОРОГО ЧИСЛА
                 System.out.print("\nВведите второе число: ");
@@ -44,19 +46,22 @@ public class Main {
                     input.next();
                     System.out.print("\nВведите второе число: ");
                 }
-                float b = input.nextFloat();
+                int b = input.nextInt();
 
 
                 System.out.println("______________________");
 
-                System.out.println("\n" + a + " " + operation+ " " +  + b + " = " + Calculate.returnCalculate(a,b,operation));
+                System.out.println("\n" + "HEX: " + a + " " + operation+ " " +  + b + " = " + Calculate.returnCalculate(a,b,operation).get(3));
+                System.out.println("DEC: " + a + " " + operation+ " " +  + b + " = " + Calculate.returnCalculate(a,b,operation).get(2));
+                System.out.println("OCT: " + a + " " + operation+ " " +  + b + " = " + Calculate.returnCalculate(a,b,operation).get(1));
+                System.out.println("BIN: " + a + " " + operation+ " " +  + b + " = " + Calculate.returnCalculate(a,b,operation).get(0));
 
                 System.out.println("Для продолжения введите 'a' и нажмите 'Enter'. Чтобы закончить - любая другая клавиша...");
                 input = new Scanner(System.in);
                 if(!((input.next()).toLowerCase()).equals("a")){
                     break;
                 }
-                System.out.println("______________________");
+                System.out.println("///______________________///");
             }
         }
         catch (Exception e)

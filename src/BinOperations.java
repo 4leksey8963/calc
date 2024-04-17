@@ -1,6 +1,6 @@
 public class BinOperations implements Calculate {
 
-    DecOperations dec;
+    DecOperations dec = new DecOperations();
     @Override
     public String plus(String a, String b) {
         try {

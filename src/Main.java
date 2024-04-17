@@ -55,10 +55,7 @@ public class Main {
                 if(operation.equals("/") && b == 0)
                     System.out.println("\nДеление на ноль невозможно!");
                 else {
-                    System.out.println("\n" + "HEX: " + a + " " + operation+ " " +  + b + " = " + Calculate.returnCalculate(a,b,operation).get(3));
-                    System.out.println("DEC: " + a + " " + operation+ " " +  + b + " = " + Calculate.returnCalculate(a,b,operation).get(2));
-                    System.out.println("OCT: " + a + " " + operation+ " " +  + b + " = " + Calculate.returnCalculate(a,b,operation).get(1));
-                    System.out.println("BIN: " + a + " " + operation+ " " +  + b + " = " + Calculate.returnCalculate(a,b,operation).get(0));
+                    
                 }
 
                 System.out.println("\nДля продолжения введите 'w' и нажмите ENTER. Чтобы закончить - любая другая клавиша...");

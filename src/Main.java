@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.beans.IntrospectionException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -56,14 +57,24 @@ public class Main {
                 // ВВОД ПЕРВОГО ЧИСЛА
                 System.out.print("\nВведите первое число: ");
                 input = new Scanner(System.in);
-                while(!input.hasNextInt())
+                String str = "";
+                int a= 0;
+                while (true)
                 {
-                    System.out.println("Требуется ввести целое число!");
-                    input.next();
+                    str = input.next();
+                    try{
+                        a = Integer.parseInt(str);
+                        if (calc.checkIs(str))
+                        {
+                            break;
+                        }
+                    }
+                    catch(Exception e){
+                        System.out.println("Требуется ввести число в выбранной системе счисления!");
+                    }
                     System.out.print("\nВведите первое число: ");
                 }
                 System.out.println("______________________");
-                int a = input.nextInt();
 
                 // ВВОД СИМВОЛА ОПЕРАЦИИ
                 System.out.print("\nВведите символ операции (+, -, *, /): ");
@@ -79,14 +90,22 @@ public class Main {
 
                 // ВВОД ВТОРОГО ЧИСЛА
                 System.out.print("\nВведите второе число: ");
-                input = new Scanner(System.in);
-                while(!input.hasNextInt())
+                int b= 0;
+                while (true)
                 {
-                    System.out.println("Требуется ввести целое число!");
-                    input.next();
+                    str = input.next();
+                    try{
+                        b = Integer.parseInt(str);
+                        if (calc.checkIs(str))
+                        {
+                            break;
+                        }
+                    }
+                    catch(Exception e){
+                        System.out.println("Требуется ввести число в выбранной системе счисления!");
+                    }
                     System.out.print("\nВведите второе число: ");
                 }
-                int b = input.nextInt();
 
 
                 System.out.println("______________________");
@@ -101,7 +120,12 @@ public class Main {
                         case "/" -> calc.division("" + a, "" + b);
                         default -> out;
                     };
-                    System.out.println("Ответ: "+out);
+                    if (out != ""){
+                        System.out.println("Ответ в двоичной системе: "+Integer.toBinaryString(Integer.parseInt(out)));
+                        System.out.println("Ответ в восьмеричной системе: "+Integer.toOctalString(Integer.parseInt(out)));
+                        System.out.println("Ответ в десятичной системе: "+Integer.parseInt(out));
+                        System.out.println("Ответ в шестнадцатиричной системе: "+ Integer.toHexString(Integer.parseInt(out)));
+                    }
                 }
 
                 System.out.println("\nДля продолжения введите 'w' и нажмите ENTER. Чтобы закончить - любая другая клавиша...");

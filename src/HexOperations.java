@@ -1,9 +1,8 @@
 public class HexOperations implements Calculate{
-    DecOperations dec = new DecOperations();
     @Override
     public String plus(String a, String b) {
         try {
-            return Integer.toHexString(Integer.parseInt(dec.plus(a, b)));
+            return  "" + (Integer.parseInt(a, 16) + Integer.parseInt(b, 16));
         }
         catch(Exception e)
         {
@@ -15,7 +14,7 @@ public class HexOperations implements Calculate{
     @Override
     public String minus(String a, String b) {
         try {
-            return Integer.toHexString(Integer.parseInt(dec.minus(a, b)));
+            return  "" + (Integer.parseInt(a, 16) - Integer.parseInt(b, 16));
         }
         catch(Exception e)
         {
@@ -27,7 +26,7 @@ public class HexOperations implements Calculate{
     @Override
     public String multiply(String a, String b) {
         try {
-            return Integer.toHexString(Integer.parseInt(dec.multiply(a, b)));
+            return  "" + (Integer.parseInt(a, 16) * Integer.parseInt(b, 16));
         }
         catch(Exception e)
         {
@@ -39,12 +38,29 @@ public class HexOperations implements Calculate{
     @Override
     public String division(String a, String b) {
         try {
-            return Integer.toHexString(Integer.parseInt(dec.division(a, b)));
+            return  "" + (Integer.parseInt(a, 16) / Integer.parseInt(b, 16));
         }
         catch(Exception e)
         {
             System.out.println(e);
         }
         return "";
+    }
+
+    public Boolean checkIs(String a)
+    {
+        try{
+            if (a.charAt(0) == '0'){
+                System.out.println("Число не может начинаться с нуля в шестнадцатиричной системе счисления!");
+                return false;
+            }
+            Integer.parseInt(a, 16);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
     }
 }

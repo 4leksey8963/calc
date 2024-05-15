@@ -7,4 +7,6 @@ public interface Calculate {
     public String minus(String a, String b);
     public String multiply(String a, String b);
     public String division(String a, String b);
+    public  Boolean checkIs(String a);
 }
+
